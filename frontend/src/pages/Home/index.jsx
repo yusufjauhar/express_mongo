@@ -51,22 +51,10 @@ const Home = () => {
                 <Link to={`/detail/${product._id}`} className="btn btn-sm btn-info">
                   Detail
                 </Link>
-                <Link
-                  to={{
-                    pathname: `/edit/${product._id}`,
-                    state: {
-                      id: product._id,
-                      name: product.name,
-                      price: product.price,
-                      stock: product.stock,
-                      status: product.status,
-                    },
-                  }}
-                  className="btn btn-sm btn-warning"
-                >
+                <Link to={`/edit/${product._id}`} className="btn btn-sm btn-warning">
                   Edit
                 </Link>
-                <Link to="#" className="btn btn-sm btn-danger">
+                <Link to={`/delete/${product._id}`} className="btn btn-sm btn-danger">
                   Delete
                 </Link>
               </td>

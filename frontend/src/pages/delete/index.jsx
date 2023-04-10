@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
-import "./index.scss";
+// import "./index.scss";
 
-const Detail = () => {
+const Delete = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const history = useHistory();
 
   useEffect(() => {
     console.log(id);
@@ -15,6 +16,13 @@ const Detail = () => {
     };
     getProductById();
   }, [id]);
+
+  const handleDelete = async (id) => {
+    const response = await axios.delete(`http://localhost:3000/api/v3/product/${id}`);
+    console.log(response);
+    alert("Data berhasil dihapus");
+    history.push("/");
+  };
 
   return (
     <div className="main">
@@ -42,8 +50,11 @@ const Detail = () => {
           </tr>
         </tbody>
       </table>
+      <Link to="#" className="btn btn-sm btn-danger" onClick={() => handleDelete(id)}>
+        Delete
+      </Link>
     </div>
   );
 };
 
-export default Detail;
+export default Delete;

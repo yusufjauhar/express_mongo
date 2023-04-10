@@ -4,6 +4,7 @@ import Detail from "./pages/Detail";
 import Edit from "./pages/Edit";
 import Home from "./pages/Home";
 import Tambah from "./pages/Tambah";
+import Delete from "./pages/delete";
 
 const App = () => {
   return (
@@ -12,8 +13,9 @@ const App = () => {
         <Navigation />
         <Switch>
           <Route path="/" exact children={() => <Home />} />
-          <Route path="/detail" children={() => <Detail />} />
-          <Route path="/edit" children={() => <Edit />} />
+          <Route path="/detail/:id" children={() => <Detail />} />
+          <Route path="/edit/:id" children={() => <Edit />} />
+          <Route path="/delete/:id" children={() => <Delete />} />
           <Route path="/tambah" children={() => <Tambah />} />
         </Switch>
       </BrowserRouter>
